@@ -33,6 +33,15 @@
             $("#productName").text(prodName);
 
             // retrieve the product information via AJAX
+            $.getJSON("product-data.json").done(function(prodData) {
+                prodData.products.forEach(function(elem) {
+                    if (elem.prod_id == prodID) {
+                        $("#productStock").text(elem.in_stock);
+                        $("#productPrice").text(elem.retail_price);
+                        $("#productDesc").text(elem.description);
+                    }
+                })
+            })
 
         })
     </script>
